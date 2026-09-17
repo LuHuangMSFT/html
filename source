@@ -17891,9 +17891,14 @@ interface <dfn interface>HTMLMetaElement</dfn> : <span>HTMLElement</span> {
    data-x="meta-application-title">application-title</code></dfn></dt>
 
    <dd>
-    <p>The value must be a short free-form string that gives document-specific context for use in
-    application UI, such as the name of the document or section currently displayed. It does not
-    change the name or identity of the application. The value may be the empty string.</p>
+    <p>The <code data-x="meta-application-title">application-title</code> metadata name gives a
+    short title for the current document or activity within a web application, such as the name of
+    an open document or the section currently displayed. It differs from <code
+    data-x="meta-application-name">application-name</code>, which gives the name of the web
+    application, and from the document's <code>title</code>, which identifies the document when it
+    is presented out of context. User agents can present an application title alongside an
+    application name, so authors should choose a value that remains useful in that context. The
+    value may be the empty string.</p>
 
     <p>There must not be more than one <code>meta</code> element where the <code
     data-x="attr-meta-name">name</code> attribute value is an <span>ASCII case-insensitive</span>
@@ -17901,11 +17906,18 @@ interface <dfn interface>HTMLMetaElement</dfn> : <span>HTMLElement</span> {
 
     <div class="example">
 
-     <p>An installed word processor can provide the name of the current document separately from
-     its page title:</p>
+     <p>An installed word processor can provide its application name, the name of the current
+     document for application UI, and a full document title separately:</p>
 
-     <pre><code class="html">&lt;title>Quarterly report — Contoso Writer&lt;/title>
+     <pre><code class="html">&lt;link rel="manifest" href="/manifest.webmanifest">
+&lt;meta name="application-name" content="Contoso Writer">
+&lt;title>Quarterly report — Contoso Writer&lt;/title>
 &lt;meta name="application-title" content="Quarterly report"></code></pre>
+
+     <p>The manifest and <code data-x="meta-application-name">application-name</code> identify the
+     application as "Contoso Writer". A browser tab can continue to use the full document
+     <code>title</code>, while installed application UI can present "Contoso Writer — Quarterly
+     report".</p>
 
     </div>
 
@@ -17947,12 +17959,13 @@ interface <dfn interface>HTMLMetaElement</dfn> : <span>HTMLElement</span> {
     <code>meta</code> element with <code data-x="attr-meta-content">content=""</code> supplies the
     empty string, while an element without the attribute is not a candidate.</p>
 
-    <p>If any <code>meta</code> elements are <span data-x="node is inserted into a
+    <p>If a user agent is using the result of the above algorithm in UI, then whenever a DOM change
+    might change that result, the user agent must re-run the algorithm and update any affected UI.
+    Such changes include <code>meta</code> elements being <span data-x="node is inserted into a
     document">inserted into the document</span> or <span data-x="node is removed from a
-    document">removed from the document</span>, or existing <code>meta</code> elements have their
-    <code data-x="attr-meta-name">name</code> or <code
-    data-x="attr-meta-content">content</code> attributes changed, user agents must re-run the above
-    algorithm and apply the result to any affected UI.</p>
+    document">removed from the document</span>, and changes to their <code
+    data-x="attr-meta-name">name</code> or <code data-x="attr-meta-content">content</code>
+    attributes.</p>
 
     <p>When using an application title in UI associated with a <span>top-level traversable</span>,
     user agents must only use the application title of that <span>top-level traversable</span>'s
@@ -17962,17 +17975,20 @@ interface <dfn interface>HTMLMetaElement</dfn> : <span>HTMLElement</span> {
     </div>
 
     <p>User agents may use the result of <span data-x="obtain an application title">obtaining a
-    document's application title</span> in UI for an <span>installed web application</span>, such as
-    the title of an application window. If the result is null, then the user agent is expected to
-    retain its normal behavior for deriving that UI from the document's <code>title</code> and other
-    application metadata. If the result is the empty string, then the user agent may omit
-    document-specific context from that UI.</p>
+    document's application title</span> as the document-specific portion of UI for an
+    <span>installed web application</span>, such as the title of an application window. A user agent
+    that does so must use the result when it is not null. When the result is null, it must instead
+    use the document's <code data-x="dom-document-title">title</code>. An empty string therefore
+    specifies that the UI has no document-specific portion.</p>
 
-    <p>When presenting a nonempty application title, user agents must not present it in place of the
-    application's name or another trusted indication of application identity. User agents may
-    truncate, elide, or otherwise adapt the value to fit the constraints of their UI. When combining
-    an application title with an application name, user agents should use locale-appropriate order
-    and punctuation.</p>
+    <p>An application title is untrusted, document-controlled text. A user agent must not use it as
+    the sole indication of which installed web application owns the UI. User agents may truncate,
+    elide, or otherwise adapt the value to fit the constraints of their UI.</p>
+
+    <p>When presenting an application title, the user agent should use the <span>language</span> and
+    <span>the directionality</span> of the <code>meta</code> element from which the value was
+    obtained. When combining an application title with an application name, the user agent should
+    bidirectionally isolate the two strings and use locale-appropriate order and punctuation.</p>
    </dd>
 
    <dt><dfn attr-value for="meta/name"><code data-x="meta-author">author</code></dfn></dt>
