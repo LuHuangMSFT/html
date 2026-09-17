@@ -4832,7 +4832,9 @@ a.setAttribute('href', 'https://example.com/'); // change the content attribute 
     <ul class="brief">
      <li><dfn data-x-href="https://w3c.github.io/manifest/#dfn-manifest">application manifest</dfn></li>
      <li><dfn data-x-href="https://w3c.github.io/manifest/#dfn-installed-web-application">installed web application</dfn></li>
+     <li><dfn data-x-href="https://w3c.github.io/manifest/#dfn-navigation-scope">navigation scope</dfn></li>
      <li><dfn data-x-href="https://w3c.github.io/manifest/#dfn-processing-a-manifest">process the manifest</dfn></li>
+     <li><dfn data-x-href="https://w3c.github.io/manifest/#dfn-within-scope">within scope</dfn></li>
     </ul>
    </dd>
 
@@ -17971,6 +17973,11 @@ interface <dfn interface>HTMLMetaElement</dfn> : <span>HTMLElement</span> {
     user agents must only use the application title of that <span>top-level traversable</span>'s
     <span>active document</span>. In particular, an application title from a document in a
     descendant <span data-x="navigable">navigable</span> must not affect such UI.</p>
+
+    <p>When the UI is for an <span>installed web application</span>, the user agent must only use an
+    application title while the active document's <span>URL</span> is <span>within scope</span> of
+    the <span>navigation scope</span> of the <span>application manifest</span> applied to the
+    <span>top-level traversable</span>.</p>
 
     </div>
 
