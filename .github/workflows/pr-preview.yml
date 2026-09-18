@@ -27,23 +27,22 @@ jobs:
       uses: actions/checkout@v4
       with:
         fetch-depth: 2
-        path: source
 
     - name: Build
       if: github.event.action != 'closed'
       run: |
-        mkdir output
+        mkdir "$RUNNER_TEMP/html-output"
         docker run \
-          --mount "type=bind,source=$GITHUB_WORKSPACE/source,destination=/whatwg/html,readonly=1" \
+          --mount "type=bind,source=$GITHUB_WORKSPACE,destination=/whatwg/html,readonly=1" \
           --env "HTML_SOURCE=/whatwg/html" \
-          --mount "type=bind,source=$GITHUB_WORKSPACE/output,destination=/whatwg/output" \
+          --mount "type=bind,source=$RUNNER_TEMP/html-output,destination=/whatwg/output" \
           --env "HTML_OUTPUT=/whatwg/output" \
           ghcr.io/whatwg/html-build
 
     - name: Deploy preview
       uses: rossjrw/pr-preview-action@ffa7509e91a3ec8dfc2e5536c4d5c1acdf7a6de9 # v1.8.1
       with:
-        source-dir: output
+        source-dir: ${{ runner.temp }}/html-output
         preview-branch: gh-pages
         wait-for-pages-deployment: true
         qr-code: false
