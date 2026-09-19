@@ -641,21 +641,17 @@ gave me some of the songs they wrote. I love sharing my music.<c- p>&lt;/</c-><c
 
     
 
-    <p>User agents may use the result of <span>obtaining a
-    document's application title</span> as the document-specific portion of UI for an
-    <a id=standard-metadata-names:installed-web-application href=https://w3c.github.io/manifest/#dfn-installed-web-application data-x-internal=installed-web-application>installed web application</a>, such as the title of an application window. A user agent
-    that does so must use the result when it is not null. When the result is null, it must instead
-    use the document's <code id=standard-metadata-names:dom-document-title><a href=dom.html#dom-document-title>title</a></code>. An empty string therefore
-    specifies that the UI has no document-specific portion.</p>
+    <p>User agents may use a non-null application title as document-specific text in UI for an
+    <a id=standard-metadata-names:installed-web-application href=https://w3c.github.io/manifest/#dfn-installed-web-application data-x-internal=installed-web-application>installed web application</a>, such as the title of an application window. A null result
+    means that no application title was supplied. An empty string explicitly supplies no
+    document-specific text.</p>
 
     <p>An application title is untrusted, document-controlled text. A user agent must not use it as
-    the sole indication of which installed web application owns the UI. User agents may truncate,
-    elide, or otherwise adapt the value to fit the constraints of their UI.</p>
-
-    <p>When presenting an application title, the user agent should use the <span>language</span> and
-    <a id=standard-metadata-names:the-directionality href=dom.html#the-directionality>the directionality</a> of the <code id=standard-metadata-names:the-meta-element-4><a href=#the-meta-element>meta</a></code> element from which the value was
-    obtained. When combining an application title with an application name, the user agent should
-    bidirectionally isolate the two strings and use locale-appropriate order and punctuation.</p>
+    the sole indication of which installed web application owns the UI. When presenting an
+    application title, the user agent should use the <span>language</span> and <a id=standard-metadata-names:the-directionality href=dom.html#the-directionality>the
+    directionality</a> of the <code id=standard-metadata-names:the-meta-element-4><a href=#the-meta-element>meta</a></code> element that supplied it. When combining an
+    application title with other text, the user agent should bidirectionally isolate the component
+    strings.</p>
    <dt><dfn data-dfn-for=meta/name id=meta-author data-dfn-type=attr-value><code>author</code></dfn><dd><p>The value must be a free-form string giving the name of one of the page's
    authors.<dt><dfn data-dfn-for=meta/name id=meta-description data-dfn-type=attr-value><code>description</code></dfn><dd><p>The value must be a free-form string that describes the page. The value must be
    appropriate for use in a directory of pages, e.g. in a search engine. There must not be more than

@@ -32,7 +32,7 @@
     <div>
      <a href="https://github.com/whatwg/html" class="changes"><span><strong>Contribute on GitHub</strong> <code>whatwg/html repository</code></span></a>
      <a href="https://github.com/whatwg/html/commits" class="changes"><span><strong>Commits</strong> <code>on GitHub</code></span></a>
-     <a id="commit-snapshot-link" href="/commit-snapshots/9a4389eae7ef72ecd2d837cfeeb0e4a8cc652514/" class="changes" title="You can also press the 'y' key"><span><strong>Snapshot</strong> <code>as of this commit</code></span></a>
+     <a id="commit-snapshot-link" href="/commit-snapshots/39b965ac8461fc241ae717afe694ba779111f23f/" class="changes" title="You can also press the 'y' key"><span><strong>Snapshot</strong> <code>as of this commit</code></span></a>
     </div>
     <div>
      <a href="https://github.com/whatwg/html/issues" class="feedback"><span><strong>Open Issues</strong> <code>filed on GitHub</code></span></a>
@@ -2712,7 +2712,7 @@ a<c- p="">.</c->setAttribute<c- p="">(</c-><c- t="">'href'</c-><c- p="">,</c-> <
    </dd><dt>Web App Manifest</dt><dd>
     <p>The following features are defined in <cite>Web App Manifest</cite>: <a href="#refsMANIFEST">[MANIFEST]</a></p>
 
-    <ul class="brief"><li><dfn id="application-manifest"><a href="https://w3c.github.io/manifest/#dfn-manifest">application manifest</a></dfn></li><li><dfn id="installed-web-application"><a href="https://w3c.github.io/manifest/#dfn-installed-web-application">installed web application</a></dfn></li><li><dfn id="navigation-scope"><a href="https://w3c.github.io/manifest/#dfn-navigation-scope">navigation scope</a></dfn></li><li><dfn id="process-the-manifest"><a href="https://w3c.github.io/manifest/#dfn-processing-a-manifest">process the manifest</a></dfn></li><li><dfn id="within-scope"><a href="https://w3c.github.io/manifest/#dfn-within-scope">within scope</a></dfn></li></ul>
+    <ul class="brief"><li><dfn id="application-manifest"><a href="https://w3c.github.io/manifest/#dfn-manifest">application manifest</a></dfn></li><li><dfn id="installed-web-application"><a href="https://w3c.github.io/manifest/#dfn-installed-web-application">installed web application</a></dfn></li><li><dfn id="process-the-manifest"><a href="https://w3c.github.io/manifest/#dfn-processing-a-manifest">process the manifest</a></dfn></li></ul>
    </dd><dt>WebAssembly JavaScript Interface: ESM Integration</dt><dd>
     <p>The following terms are defined in <cite>WebAssembly JavaScript Interface: ESM Integration</cite>: <a href="#refsWASMESM">[WASMESM]</a></p>
 
@@ -11352,42 +11352,28 @@ Link: &lt;/font.ttf&gt;; <a href="#attr-link-rel" id="early-hints:attr-link-rel-
     <code id="standard-metadata-names:the-meta-element-8"><a href="#the-meta-element">meta</a></code> element with <code id="standard-metadata-names:attr-meta-content-5"><a href="#attr-meta-content">content=""</a></code> supplies the
     empty string, while an element without the attribute is not a candidate.</p>
 
-    <p>If a user agent is using the result of the above algorithm in UI, then whenever a DOM change
-    might change that result, the user agent must re-run the algorithm and update any affected UI.
-    Such changes include <code id="standard-metadata-names:the-meta-element-9"><a href="#the-meta-element">meta</a></code> elements being <a href="#insert-an-element-into-a-document" id="standard-metadata-names:insert-an-element-into-a-document">inserted into the document</a> or <a href="#remove-an-element-from-a-document" id="standard-metadata-names:remove-an-element-from-a-document">removed from the document</a>, and changes to their <code id="standard-metadata-names:attr-meta-name-7"><a href="#attr-meta-name">name</a></code> or <code id="standard-metadata-names:attr-meta-content-6"><a href="#attr-meta-content">content</a></code>
-    attributes.</p>
-
-    <p>When using an application title in UI associated with a <a href="#top-level-traversable" id="standard-metadata-names:top-level-traversable">top-level traversable</a>,
-    user agents must only use the application title of that <a href="#top-level-traversable" id="standard-metadata-names:top-level-traversable-2">top-level traversable</a>'s
-    <a href="#active-document" id="standard-metadata-names:active-document">active document</a>. In particular, an application title from a document in a
-    descendant <a href="#navigable" id="standard-metadata-names:navigable">navigable</a> must not affect such UI.</p>
-
-    <p>When the UI is for an <a id="standard-metadata-names:installed-web-application" href="https://w3c.github.io/manifest/#dfn-installed-web-application" data-x-internal="installed-web-application">installed web application</a>, the user agent must only use an
-    application title while the active document's <a id="standard-metadata-names:url" href="https://url.spec.whatwg.org/#concept-url" data-x-internal="url">URL</a> is <a id="standard-metadata-names:within-scope" href="https://w3c.github.io/manifest/#dfn-within-scope" data-x-internal="within-scope">within scope</a> of
-    the <a id="standard-metadata-names:navigation-scope" href="https://w3c.github.io/manifest/#dfn-navigation-scope" data-x-internal="navigation-scope">navigation scope</a> of the <a id="standard-metadata-names:application-manifest" href="https://w3c.github.io/manifest/#dfn-manifest" data-x-internal="application-manifest">application manifest</a> applied to the
-    <a href="#top-level-traversable" id="standard-metadata-names:top-level-traversable-3">top-level traversable</a>.</p>
+    <p>If a user agent uses a document's application title in UI, it must update the affected UI
+    whenever the result of obtaining that title changes. UI associated with a <a href="#top-level-traversable" id="standard-metadata-names:top-level-traversable">top-level
+    traversable</a> must use only its <a href="#active-document" id="standard-metadata-names:active-document">active document</a>'s application title; documents
+    in descendant <a href="#navigable" id="standard-metadata-names:navigable">navigables</a> must not affect that UI.</p>
 
     
 
-    <p>User agents may use the result of <a href="#obtain-an-application-title" id="standard-metadata-names:obtain-an-application-title">obtaining a
-    document's application title</a> as the document-specific portion of UI for an
-    <a id="standard-metadata-names:installed-web-application-2" href="https://w3c.github.io/manifest/#dfn-installed-web-application" data-x-internal="installed-web-application">installed web application</a>, such as the title of an application window. A user agent
-    that does so must use the result when it is not null. When the result is null, it must instead
-    use the document's <code id="standard-metadata-names:document.title"><a href="#document.title">title</a></code>. An empty string therefore
-    specifies that the UI has no document-specific portion.</p>
+    <p>User agents may use a non-null application title as document-specific text in UI for an
+    <a id="standard-metadata-names:installed-web-application" href="https://w3c.github.io/manifest/#dfn-installed-web-application" data-x-internal="installed-web-application">installed web application</a>, such as the title of an application window. A null result
+    means that no application title was supplied. An empty string explicitly supplies no
+    document-specific text.</p>
 
     <p>An application title is untrusted, document-controlled text. A user agent must not use it as
-    the sole indication of which installed web application owns the UI. User agents may truncate,
-    elide, or otherwise adapt the value to fit the constraints of their UI.</p>
-
-    <p>When presenting an application title, the user agent should use the <a href="#language" id="standard-metadata-names:language-5">language</a> and
-    <a href="#the-directionality" id="standard-metadata-names:the-directionality">the directionality</a> of the <code id="standard-metadata-names:the-meta-element-10"><a href="#the-meta-element">meta</a></code> element from which the value was
-    obtained. When combining an application title with an application name, the user agent should
-    bidirectionally isolate the two strings and use locale-appropriate order and punctuation.</p>
+    the sole indication of which installed web application owns the UI. When presenting an
+    application title, the user agent should use the <a href="#language" id="standard-metadata-names:language-5">language</a> and <a href="#the-directionality" id="standard-metadata-names:the-directionality">the
+    directionality</a> of the <code id="standard-metadata-names:the-meta-element-9"><a href="#the-meta-element">meta</a></code> element that supplied it. When combining an
+    application title with other text, the user agent should bidirectionally isolate the component
+    strings.</p>
    </dd><dt><dfn data-dfn-for="meta/name" id="meta-author" data-dfn-type="attr-value"><code>author</code></dfn></dt><dd><p>The value must be a free-form string giving the name of one of the page's
    authors.</p></dd><dt><dfn data-dfn-for="meta/name" id="meta-description" data-dfn-type="attr-value"><code>description</code></dfn></dt><dd><p>The value must be a free-form string that describes the page. The value must be
    appropriate for use in a directory of pages, e.g. in a search engine. There must not be more than
-   one <code id="standard-metadata-names:the-meta-element-11"><a href="#the-meta-element">meta</a></code> element where the <code id="standard-metadata-names:attr-meta-name-8"><a href="#attr-meta-name">name</a></code> attribute value
+   one <code id="standard-metadata-names:the-meta-element-10"><a href="#the-meta-element">meta</a></code> element where the <code id="standard-metadata-names:attr-meta-name-7"><a href="#attr-meta-name">name</a></code> attribute value
    is an <a id="standard-metadata-names:ascii-case-insensitive-7" href="https://infra.spec.whatwg.org/#ascii-case-insensitive" data-x-internal="ascii-case-insensitive">ASCII case-insensitive</a> match for
    <code id="standard-metadata-names:meta-description"><a href="#meta-description">description</a></code> per document.</p></dd><dt><dfn data-dfn-for="meta/name" id="meta-generator" data-dfn-type="attr-value"><code>generator</code></dfn></dt><dd>
     <p>The value must be a free-form string that identifies one of the software packages used to
@@ -11408,7 +11394,7 @@ Link: &lt;/font.ttf&gt;; <a href="#attr-link-rel" id="early-hints:attr-link-rel-
 
     <div class="example">
 
-     <p>This page about typefaces on British motorways uses a <code id="standard-metadata-names:the-meta-element-12"><a href="#the-meta-element">meta</a></code> element to specify
+     <p>This page about typefaces on British motorways uses a <code id="standard-metadata-names:the-meta-element-11"><a href="#the-meta-element">meta</a></code> element to specify
      some keywords that users might use to look for the page:</p>
 
      <pre><code class="html"><c- cp="">&lt;!DOCTYPE HTML&gt;</c->
@@ -11433,8 +11419,8 @@ Link: &lt;/font.ttf&gt;; <a href="#attr-link-rel" id="early-hints:attr-link-rel-
     user agent must run the following steps:</p>
 
     <ol><li><p>Let <var>keywords</var> be an empty list.</p></li><li>
-      <p>For each <code id="standard-metadata-names:the-meta-element-13"><a href="#the-meta-element">meta</a></code> element with a <code id="standard-metadata-names:attr-meta-name-9"><a href="#attr-meta-name">name</a></code>
-      attribute and a <code id="standard-metadata-names:attr-meta-content-7"><a href="#attr-meta-content">content</a></code> attribute and where the <code id="standard-metadata-names:attr-meta-name-10"><a href="#attr-meta-name">name</a></code> attribute value is an <a id="standard-metadata-names:ascii-case-insensitive-8" href="https://infra.spec.whatwg.org/#ascii-case-insensitive" data-x-internal="ascii-case-insensitive">ASCII case-insensitive</a>
+      <p>For each <code id="standard-metadata-names:the-meta-element-12"><a href="#the-meta-element">meta</a></code> element with a <code id="standard-metadata-names:attr-meta-name-8"><a href="#attr-meta-name">name</a></code>
+      attribute and a <code id="standard-metadata-names:attr-meta-content-6"><a href="#attr-meta-content">content</a></code> attribute and where the <code id="standard-metadata-names:attr-meta-name-9"><a href="#attr-meta-name">name</a></code> attribute value is an <a id="standard-metadata-names:ascii-case-insensitive-8" href="https://infra.spec.whatwg.org/#ascii-case-insensitive" data-x-internal="ascii-case-insensitive">ASCII case-insensitive</a>
       match for <code id="standard-metadata-names:meta-keywords"><a href="#meta-keywords">keywords</a></code>:</p>
 
       <ol><li><p><a href="https://infra.spec.whatwg.org/#split-on-commas" id="standard-metadata-names:split-a-string-on-commas" data-x-internal="split-a-string-on-commas">Split the value of the element's <code>content</code> attribute on commas</a>.</p></li><li><p>Add the resulting tokens, if any, to <var>keywords</var>.</p></li></ol>
@@ -11459,12 +11445,12 @@ Link: &lt;/font.ttf&gt;; <a href="#attr-link-rel" id="early-hints:attr-link-rel-
     
 
     <div data-algorithm="">
-    <p>If any <code id="standard-metadata-names:the-meta-element-14"><a href="#the-meta-element">meta</a></code> element <var>element</var> is <a href="#insert-an-element-into-a-document" id="standard-metadata-names:insert-an-element-into-a-document-2">inserted into the document</a>, or has its <code id="standard-metadata-names:attr-meta-name-11"><a href="#attr-meta-name">name</a></code> or <code id="standard-metadata-names:attr-meta-content-8"><a href="#attr-meta-content">content</a></code>
+    <p>If any <code id="standard-metadata-names:the-meta-element-13"><a href="#the-meta-element">meta</a></code> element <var>element</var> is <a href="#insert-an-element-into-a-document" id="standard-metadata-names:insert-an-element-into-a-document">inserted into the document</a>, or has its <code id="standard-metadata-names:attr-meta-name-10"><a href="#attr-meta-name">name</a></code> or <code id="standard-metadata-names:attr-meta-content-7"><a href="#attr-meta-content">content</a></code>
     attributes changed, user agents must run the following algorithm:</p>
 
-    <ol><li><p>If <var>element</var> is not <a id="standard-metadata-names:in-a-document-tree" href="https://dom.spec.whatwg.org/#in-a-document-tree" data-x-internal="in-a-document-tree">in a document tree</a>, then return.</p></li><li><p>If <var>element</var> does not have a <code id="standard-metadata-names:attr-meta-name-12"><a href="#attr-meta-name">name</a></code>
-     attribute whose value is an <a id="standard-metadata-names:ascii-case-insensitive-9" href="https://infra.spec.whatwg.org/#ascii-case-insensitive" data-x-internal="ascii-case-insensitive">ASCII case-insensitive</a> match for "<code id="standard-metadata-names:meta-referrer"><a href="#meta-referrer">referrer</a></code>", then return.</p></li><li><p>If <var>element</var> does not have a <code id="standard-metadata-names:attr-meta-content-9"><a href="#attr-meta-content">content</a></code>
-     attribute, or that attribute's value is the empty string, then return.</p></li><li><p>Let <var>value</var> be the value of <var>element</var>'s <code id="standard-metadata-names:attr-meta-content-10"><a href="#attr-meta-content">content</a></code> attribute, <a id="standard-metadata-names:converted-to-ascii-lowercase" href="https://infra.spec.whatwg.org/#ascii-lowercase" data-x-internal="converted-to-ascii-lowercase">converted to ASCII
+    <ol><li><p>If <var>element</var> is not <a id="standard-metadata-names:in-a-document-tree" href="https://dom.spec.whatwg.org/#in-a-document-tree" data-x-internal="in-a-document-tree">in a document tree</a>, then return.</p></li><li><p>If <var>element</var> does not have a <code id="standard-metadata-names:attr-meta-name-11"><a href="#attr-meta-name">name</a></code>
+     attribute whose value is an <a id="standard-metadata-names:ascii-case-insensitive-9" href="https://infra.spec.whatwg.org/#ascii-case-insensitive" data-x-internal="ascii-case-insensitive">ASCII case-insensitive</a> match for "<code id="standard-metadata-names:meta-referrer"><a href="#meta-referrer">referrer</a></code>", then return.</p></li><li><p>If <var>element</var> does not have a <code id="standard-metadata-names:attr-meta-content-8"><a href="#attr-meta-content">content</a></code>
+     attribute, or that attribute's value is the empty string, then return.</p></li><li><p>Let <var>value</var> be the value of <var>element</var>'s <code id="standard-metadata-names:attr-meta-content-9"><a href="#attr-meta-content">content</a></code> attribute, <a id="standard-metadata-names:converted-to-ascii-lowercase" href="https://infra.spec.whatwg.org/#ascii-lowercase" data-x-internal="converted-to-ascii-lowercase">converted to ASCII
      lowercase</a>.</p></li><li>
       <p>If <var>value</var> is one of the values given in the first column of the following table,
       then set <var>value</var> to the value given in the second column:</p>
@@ -11489,7 +11475,7 @@ Link: &lt;/font.ttf&gt;; <a href="#attr-link-rel" id="early-hints:attr-link-rel-
     <p class="note">For historical reasons, unlike other standard metadata names, the processing
     model for <code id="standard-metadata-names:meta-referrer-2"><a href="#meta-referrer">referrer</a></code> is not responsive to element removals,
     and does not use <a id="standard-metadata-names:tree-order-3" href="https://dom.spec.whatwg.org/#concept-tree-order" data-x-internal="tree-order">tree order</a>. Only the most-recently-inserted or
-    most-recently-modified <code id="standard-metadata-names:the-meta-element-15"><a href="#the-meta-element">meta</a></code> element in this state has an effect.</p>
+    most-recently-modified <code id="standard-metadata-names:the-meta-element-14"><a href="#the-meta-element">meta</a></code> element in this state has an effect.</p>
 
     
    </dd><dt><dfn data-dfn-for="meta/name" id="meta-theme-color" data-dfn-type="attr-value"><code>theme-color</code></dfn><div class="mdn-anno wrapped before"><button onclick="toggleStatus(this)" class="mdn-anno-btn"><span>MDN</span></button><div class="feature"><p><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/meta/name/theme-color" title="The theme-color value for the name attribute of the <meta> element indicates a suggested color that user agents should use to customize the display of the page or of the surrounding user interface. If specified, the content attribute must contain a valid CSS <color>.">Element/meta/name/theme-color</a></p><div class="support"><span class="firefox no"><span>Firefox</span><span>No</span></span><span class="safari yes"><span>Safari</span><span>15+</span></span><span class="chrome yes"><span>Chrome</span><span title="Partial implementation.">🔰 73+</span></span><hr><span class="opera no"><span>Opera</span><span>No</span></span><span class="edge_blink yes"><span>Edge</span><span title="Partial implementation.">🔰 79+</span></span><hr><span class="edge unknown"><span>Edge (Legacy)</span><span>?</span></span><span class="ie no"><span>Internet Explorer</span><span>No</span></span><hr><span class="firefox_android unknown"><span>Firefox Android</span><span>?</span></span><span class="safari_ios unknown"><span>Safari iOS</span><span>?</span></span><span class="chrome_android yes"><span>Chrome Android</span><span>80+</span></span><span class="webview_android no"><span>WebView Android</span><span>No</span></span><span class="samsunginternet_android yes"><span>Samsung Internet</span><span>6.2+</span></span><span class="opera_android no"><span>Opera Android</span><span>No</span></span></div></div></div></dt><dd>
@@ -11499,7 +11485,7 @@ Link: &lt;/font.ttf&gt;; <a href="#attr-link-rel" id="early-hints:attr-link-rel-
     specified value, or use it as a color highlight in a tab bar or task switcher.</p>
 
     <p>Within an HTML document, the <code id="standard-metadata-names:attr-meta-media"><a href="#attr-meta-media">media</a></code> attribute value must
-    be unique amongst all the <code id="standard-metadata-names:the-meta-element-16"><a href="#the-meta-element">meta</a></code> elements with their <code id="standard-metadata-names:attr-meta-name-13"><a href="#attr-meta-name">name</a></code> attribute value set to an <a id="standard-metadata-names:ascii-case-insensitive-10" href="https://infra.spec.whatwg.org/#ascii-case-insensitive" data-x-internal="ascii-case-insensitive">ASCII
+    be unique amongst all the <code id="standard-metadata-names:the-meta-element-15"><a href="#the-meta-element">meta</a></code> elements with their <code id="standard-metadata-names:attr-meta-name-12"><a href="#attr-meta-name">name</a></code> attribute value set to an <a id="standard-metadata-names:ascii-case-insensitive-10" href="https://infra.spec.whatwg.org/#ascii-case-insensitive" data-x-internal="ascii-case-insensitive">ASCII
     case-insensitive</a> match for <code id="standard-metadata-names:meta-theme-color"><a href="#meta-theme-color">theme-color</a></code>.</p>
 
     <div class="example">
@@ -11532,11 +11518,11 @@ Link: &lt;/font.ttf&gt;; <a href="#attr-link-rel" id="early-hints:attr-link-rel-
      <p>To obtain a page's theme color, user agents must run the following steps:</p>
 
      <ol><li>
-       <p>Let <var>candidate elements</var> be the list of all <code id="standard-metadata-names:the-meta-element-17"><a href="#the-meta-element">meta</a></code> elements that
+       <p>Let <var>candidate elements</var> be the list of all <code id="standard-metadata-names:the-meta-element-16"><a href="#the-meta-element">meta</a></code> elements that
        meet the following criteria, in <a id="standard-metadata-names:tree-order-4" href="https://dom.spec.whatwg.org/#concept-tree-order" data-x-internal="tree-order">tree order</a>:</p>
 
-       <ul><li><p>the element is <a id="standard-metadata-names:in-a-document-tree-2" href="https://dom.spec.whatwg.org/#in-a-document-tree" data-x-internal="in-a-document-tree">in a document tree</a>;</p></li><li><p>the element has a <code id="standard-metadata-names:attr-meta-name-14"><a href="#attr-meta-name">name</a></code> attribute, whose value
-        is an <a id="standard-metadata-names:ascii-case-insensitive-11" href="https://infra.spec.whatwg.org/#ascii-case-insensitive" data-x-internal="ascii-case-insensitive">ASCII case-insensitive</a> match for <code id="standard-metadata-names:meta-theme-color-2"><a href="#meta-theme-color">theme-color</a></code>; and</p></li><li><p>the element has a <code id="standard-metadata-names:attr-meta-content-11"><a href="#attr-meta-content">content</a></code> attribute.</p></li></ul>
+       <ul><li><p>the element is <a id="standard-metadata-names:in-a-document-tree-2" href="https://dom.spec.whatwg.org/#in-a-document-tree" data-x-internal="in-a-document-tree">in a document tree</a>;</p></li><li><p>the element has a <code id="standard-metadata-names:attr-meta-name-13"><a href="#attr-meta-name">name</a></code> attribute, whose value
+        is an <a id="standard-metadata-names:ascii-case-insensitive-11" href="https://infra.spec.whatwg.org/#ascii-case-insensitive" data-x-internal="ascii-case-insensitive">ASCII case-insensitive</a> match for <code id="standard-metadata-names:meta-theme-color-2"><a href="#meta-theme-color">theme-color</a></code>; and</p></li><li><p>the element has a <code id="standard-metadata-names:attr-meta-content-10"><a href="#attr-meta-content">content</a></code> attribute.</p></li></ul>
       </li><li>
        <p>For each <var>element</var> in <var>candidate elements</var>:</p>
 
@@ -11544,14 +11530,14 @@ Link: &lt;/font.ttf&gt;; <a href="#attr-link-rel" id="early-hints:attr-link-rel-
         and the value of <var>element</var>'s <code id="standard-metadata-names:attr-meta-media-3"><a href="#attr-meta-media">media</a></code>
         attribute does not <a href="#matches-the-environment" id="standard-metadata-names:matches-the-environment">match the environment</a>, then
         <a id="standard-metadata-names:continue" href="https://infra.spec.whatwg.org/#iteration-continue" data-x-internal="continue">continue</a>.</p></li><li><p>Let <var>value</var> be the result of <a href="https://infra.spec.whatwg.org/#strip-leading-and-trailing-ascii-whitespace" id="standard-metadata-names:strip-leading-and-trailing-ascii-whitespace-2" data-x-internal="strip-leading-and-trailing-ascii-whitespace">stripping leading and trailing ASCII whitespace</a> from the value of
-        <var>element</var>'s <code id="standard-metadata-names:attr-meta-content-12"><a href="#attr-meta-content">content</a></code> attribute.</p></li><li><p>Let <var>color</var> be the result of <a href="https://drafts.csswg.org/css-color/#parse-a-css-color-value" id="standard-metadata-names:parsed-as-a-css-color-value" data-x-internal="parsed-as-a-css-color-value">parsing</a> <var>value</var>.</p></li><li><p>If <var>color</var> is not failure, then return <var>color</var>.</p></li></ol>
+        <var>element</var>'s <code id="standard-metadata-names:attr-meta-content-11"><a href="#attr-meta-content">content</a></code> attribute.</p></li><li><p>Let <var>color</var> be the result of <a href="https://drafts.csswg.org/css-color/#parse-a-css-color-value" id="standard-metadata-names:parsed-as-a-css-color-value" data-x-internal="parsed-as-a-css-color-value">parsing</a> <var>value</var>.</p></li><li><p>If <var>color</var> is not failure, then return <var>color</var>.</p></li></ol>
       </li><li><p>Return nothing (the page has no theme color).</p></li></ol>
      </div>
 
-     <p>If any <code id="standard-metadata-names:the-meta-element-18"><a href="#the-meta-element">meta</a></code> elements are <a href="#insert-an-element-into-a-document" id="standard-metadata-names:insert-an-element-into-a-document-3">inserted into the document</a> or <a href="#remove-an-element-from-a-document" id="standard-metadata-names:remove-an-element-from-a-document-2">removed from the document</a>, or existing <code id="standard-metadata-names:the-meta-element-19"><a href="#the-meta-element">meta</a></code> elements have their
-     <code id="standard-metadata-names:attr-meta-name-15"><a href="#attr-meta-name">name</a></code>, <code id="standard-metadata-names:attr-meta-content-13"><a href="#attr-meta-content">content</a></code>, or
+     <p>If any <code id="standard-metadata-names:the-meta-element-17"><a href="#the-meta-element">meta</a></code> elements are <a href="#insert-an-element-into-a-document" id="standard-metadata-names:insert-an-element-into-a-document-2">inserted into the document</a> or <a href="#remove-an-element-from-a-document" id="standard-metadata-names:remove-an-element-from-a-document">removed from the document</a>, or existing <code id="standard-metadata-names:the-meta-element-18"><a href="#the-meta-element">meta</a></code> elements have their
+     <code id="standard-metadata-names:attr-meta-name-14"><a href="#attr-meta-name">name</a></code>, <code id="standard-metadata-names:attr-meta-content-12"><a href="#attr-meta-content">content</a></code>, or
      <code id="standard-metadata-names:attr-link-media-2"><a href="#attr-link-media">media</a></code> attributes changed, or if the environment changes
-     such that any <code id="standard-metadata-names:the-meta-element-20"><a href="#the-meta-element">meta</a></code> element's <code id="standard-metadata-names:attr-link-media-3"><a href="#attr-link-media">media</a></code>
+     such that any <code id="standard-metadata-names:the-meta-element-19"><a href="#the-meta-element">meta</a></code> element's <code id="standard-metadata-names:attr-link-media-3"><a href="#attr-link-media">media</a></code>
      attribute's value may now or may no longer <a href="#matches-the-environment" id="standard-metadata-names:matches-the-environment-2">match the
      environment</a>, user agents must re-run the above algorithm and apply the result to any
      affected UI.</p>
@@ -11565,12 +11551,12 @@ Link: &lt;/font.ttf&gt;; <a href="#attr-link-rel" id="early-hints:attr-link-rel-
    </dd><dt><dfn data-dfn-for="meta/name" id="meta-color-scheme" data-dfn-type="attr-value"><code>color-scheme</code></dfn></dt><dd>
     <p>To aid user agents in rendering the page background with the desired color scheme immediately
     (rather than waiting for all CSS in the page to load), a <a id="standard-metadata-names:'color-scheme'" href="https://drafts.csswg.org/css-color-adjust/#color-scheme-prop" data-x-internal="'color-scheme'">'color-scheme'</a> value can
-    be provided in a <code id="standard-metadata-names:the-meta-element-21"><a href="#the-meta-element">meta</a></code> element.</p>
+    be provided in a <code id="standard-metadata-names:the-meta-element-20"><a href="#the-meta-element">meta</a></code> element.</p>
 
     <p>The value must be a string that matches the syntax for the CSS <a id="standard-metadata-names:'color-scheme'-2" href="https://drafts.csswg.org/css-color-adjust/#color-scheme-prop" data-x-internal="'color-scheme'">'color-scheme'</a>
     property value. It determines the <a id="standard-metadata-names:page's-supported-color-schemes" href="https://drafts.csswg.org/css-color-adjust/#pages-supported-color-schemes" data-x-internal="page's-supported-color-schemes">page's supported color-schemes</a>.</p>
 
-    <p>There must not be more than one <code id="standard-metadata-names:the-meta-element-22"><a href="#the-meta-element">meta</a></code> element with its <code id="standard-metadata-names:attr-meta-name-16"><a href="#attr-meta-name">name</a></code> attribute value set to an
+    <p>There must not be more than one <code id="standard-metadata-names:the-meta-element-21"><a href="#the-meta-element">meta</a></code> element with its <code id="standard-metadata-names:attr-meta-name-15"><a href="#attr-meta-name">name</a></code> attribute value set to an
     <a id="standard-metadata-names:ascii-case-insensitive-12" href="https://infra.spec.whatwg.org/#ascii-case-insensitive" data-x-internal="ascii-case-insensitive">ASCII case-insensitive</a> match for <code id="standard-metadata-names:meta-color-scheme"><a href="#meta-color-scheme">color-scheme</a></code> per document.</p>
 
     <div class="example">
@@ -11586,22 +11572,22 @@ Link: &lt;/font.ttf&gt;; <a href="#attr-link-rel" id="early-hints:attr-link-rel-
      <p>To obtain a <a id="standard-metadata-names:page's-supported-color-schemes-2" href="https://drafts.csswg.org/css-color-adjust/#pages-supported-color-schemes" data-x-internal="page's-supported-color-schemes">page's supported color-schemes</a>, user agents must run the following steps:</p>
 
      <ol><li>
-       <p>Let <var>candidate elements</var> be the list of all <code id="standard-metadata-names:the-meta-element-23"><a href="#the-meta-element">meta</a></code> elements that
+       <p>Let <var>candidate elements</var> be the list of all <code id="standard-metadata-names:the-meta-element-22"><a href="#the-meta-element">meta</a></code> elements that
        meet the following criteria, in <a id="standard-metadata-names:tree-order-5" href="https://dom.spec.whatwg.org/#concept-tree-order" data-x-internal="tree-order">tree order</a>:</p>
 
-       <ul><li><p>the element is <a id="standard-metadata-names:in-a-document-tree-3" href="https://dom.spec.whatwg.org/#in-a-document-tree" data-x-internal="in-a-document-tree">in a document tree</a>;</p></li><li><p>the element has a <code id="standard-metadata-names:attr-meta-name-17"><a href="#attr-meta-name">name</a></code> attribute, whose value
-        is an <a id="standard-metadata-names:ascii-case-insensitive-13" href="https://infra.spec.whatwg.org/#ascii-case-insensitive" data-x-internal="ascii-case-insensitive">ASCII case-insensitive</a> match for <code id="standard-metadata-names:meta-color-scheme-2"><a href="#meta-color-scheme">color-scheme</a></code>; and</p></li><li><p>the element has a <code id="standard-metadata-names:attr-meta-content-14"><a href="#attr-meta-content">content</a></code> attribute.</p></li></ul>
+       <ul><li><p>the element is <a id="standard-metadata-names:in-a-document-tree-3" href="https://dom.spec.whatwg.org/#in-a-document-tree" data-x-internal="in-a-document-tree">in a document tree</a>;</p></li><li><p>the element has a <code id="standard-metadata-names:attr-meta-name-16"><a href="#attr-meta-name">name</a></code> attribute, whose value
+        is an <a id="standard-metadata-names:ascii-case-insensitive-13" href="https://infra.spec.whatwg.org/#ascii-case-insensitive" data-x-internal="ascii-case-insensitive">ASCII case-insensitive</a> match for <code id="standard-metadata-names:meta-color-scheme-2"><a href="#meta-color-scheme">color-scheme</a></code>; and</p></li><li><p>the element has a <code id="standard-metadata-names:attr-meta-content-13"><a href="#attr-meta-content">content</a></code> attribute.</p></li></ul>
       </li><li>
        <p>For each <var>element</var> in <var>candidate elements</var>:</p>
 
        <ol><li>Let <var>parsed</var> be the result of <a href="https://drafts.csswg.org/css-syntax/#parse-a-list-of-component-values" id="standard-metadata-names:parse-a-list-of-component-values" data-x-internal="parse-a-list-of-component-values">parsing a list of component values</a> given the value of <var>element</var>'s
-        <code id="standard-metadata-names:attr-meta-content-15"><a href="#attr-meta-content">content</a></code> attribute.</li><li>If <var>parsed</var> is a valid CSS <a id="standard-metadata-names:'color-scheme'-3" href="https://drafts.csswg.org/css-color-adjust/#color-scheme-prop" data-x-internal="'color-scheme'">'color-scheme'</a> property value, then
+        <code id="standard-metadata-names:attr-meta-content-14"><a href="#attr-meta-content">content</a></code> attribute.</li><li>If <var>parsed</var> is a valid CSS <a id="standard-metadata-names:'color-scheme'-3" href="https://drafts.csswg.org/css-color-adjust/#color-scheme-prop" data-x-internal="'color-scheme'">'color-scheme'</a> property value, then
         return <var>parsed</var>.</li></ol>
       </li><li><p>Return null.</p></li></ol>
      </div>
 
-     <p>If any <code id="standard-metadata-names:the-meta-element-24"><a href="#the-meta-element">meta</a></code> elements are <a href="#insert-an-element-into-a-document" id="standard-metadata-names:insert-an-element-into-a-document-4">inserted into the document</a> or <a href="#remove-an-element-from-a-document" id="standard-metadata-names:remove-an-element-from-a-document-3">removed from the document</a>, or existing <code id="standard-metadata-names:the-meta-element-25"><a href="#the-meta-element">meta</a></code> elements have their
-     <code id="standard-metadata-names:attr-meta-name-18"><a href="#attr-meta-name">name</a></code> or <code id="standard-metadata-names:attr-meta-content-16"><a href="#attr-meta-content">content</a></code>
+     <p>If any <code id="standard-metadata-names:the-meta-element-23"><a href="#the-meta-element">meta</a></code> elements are <a href="#insert-an-element-into-a-document" id="standard-metadata-names:insert-an-element-into-a-document-3">inserted into the document</a> or <a href="#remove-an-element-from-a-document" id="standard-metadata-names:remove-an-element-from-a-document-2">removed from the document</a>, or existing <code id="standard-metadata-names:the-meta-element-24"><a href="#the-meta-element">meta</a></code> elements have their
+     <code id="standard-metadata-names:attr-meta-name-17"><a href="#attr-meta-name">name</a></code> or <code id="standard-metadata-names:attr-meta-content-15"><a href="#attr-meta-content">content</a></code>
      attributes changed, user agents must re-run the above algorithm.</p>
 
     
