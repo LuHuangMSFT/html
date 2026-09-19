@@ -625,20 +625,16 @@ gave me some of the songs they wrote. I love sharing my music.<c- p>&lt;/</c-><c
 
     <div class=example>
 
-     <p>Suppose an installed word processor's manifest names the application "Contoso Writer". Its
-     document title includes that name so that it can identify the document when presented out of
-     context:</p>
+     <p>An installed word processor can provide the name of the current document separately from
+     its full document title:</p>
 
-     <pre><code class='html'><c- c>&lt;!-- /manifest.webmanifest names the application &quot;Contoso Writer&quot;. --&gt;</c->
-<c- p>&lt;</c-><c- f>link</c-> <c- e>rel</c-><c- o>=</c-><c- s>&quot;manifest&quot;</c-> <c- e>href</c-><c- o>=</c-><c- s>&quot;/manifest.webmanifest&quot;</c-><c- p>&gt;</c->
-<c- p>&lt;</c-><c- f>title</c-><c- p>&gt;</c->Quarterly report — Contoso Writer<c- p>&lt;/</c-><c- f>title</c-><c- p>&gt;</c->
+     <pre><code class='html'><c- p>&lt;</c-><c- f>title</c-><c- p>&gt;</c->Quarterly report — Contoso Writer<c- p>&lt;/</c-><c- f>title</c-><c- p>&gt;</c->
 <c- p>&lt;</c-><c- f>meta</c-> <c- e>name</c-><c- o>=</c-><c- s>&quot;application-title&quot;</c-> <c- e>content</c-><c- o>=</c-><c- s>&quot;Quarterly report&quot;</c-><c- p>&gt;</c-></code></pre>
 
-     <p>A browser tab can continue to use the full document <code id=standard-metadata-names:the-title-element-2><a href=#the-title-element>title</a></code>. Without an
-     application title, installed application UI that prefixes the application name to that title
-     could display "Contoso Writer — Quarterly report — Contoso Writer". By using the application
-     title as the document-specific portion instead, the same UI can display "Contoso Writer —
-     Quarterly report".</p>
+     <p>The full document <code id=standard-metadata-names:the-title-element-2><a href=#the-title-element>title</a></code> remains available for user interfaces that need a title
+     that identifies the document out of context. The application title provides the shorter
+     document-specific context for application UI. User agents decide how to present or combine
+     these values.</p>
 
     </div>
 
