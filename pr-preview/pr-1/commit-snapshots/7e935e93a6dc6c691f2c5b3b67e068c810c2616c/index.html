@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang=en-US-x-hixie><meta charset=utf-8><meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name=viewport><title>HTML Standard (Commit Snapshot 9e68ef38c40ca71c5c055daf8b96597b052b326c)</title><meta content=#3c790a name=theme-color><meta content="light dark" name=color-scheme><link rel=stylesheet href=https://resources.whatwg.org/standard-shared-with-dev.css crossorigin=""><link rel=stylesheet href=https://resources.whatwg.org/standard.css crossorigin=""><link rel=stylesheet href=https://resources.whatwg.org/spec.css crossorigin=""><link rel=icon href=https://resources.whatwg.org/logo-snapshot.svg crossorigin=""><link rel=stylesheet href=https://html.spec.whatwg.org/styles.css crossorigin=""><script>
+<!DOCTYPE html><html lang=en-US-x-hixie><meta charset=utf-8><meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name=viewport><title>HTML Standard (Commit Snapshot 7e935e93a6dc6c691f2c5b3b67e068c810c2616c)</title><meta content=#3c790a name=theme-color><meta content="light dark" name=color-scheme><link rel=stylesheet href=https://resources.whatwg.org/standard-shared-with-dev.css crossorigin=""><link rel=stylesheet href=https://resources.whatwg.org/standard.css crossorigin=""><link rel=stylesheet href=https://resources.whatwg.org/spec.css crossorigin=""><link rel=icon href=https://resources.whatwg.org/logo-snapshot.svg crossorigin=""><link rel=stylesheet href=https://html.spec.whatwg.org/styles.css crossorigin=""><script>
    function toggleStatus(div) {
      div.parentNode.classList.toggle('wrapped');
    }
@@ -13,7 +13,7 @@
   <script crossorigin="" defer="" src=https://resources.whatwg.org/commit-snapshot-shortcut-key.js></script>
   <header id=head class="head with-buttons">
    <a href=https://whatwg.org/ class=logo><img width=100 alt=WHATWG crossorigin="" class=darkmode-aware src=https://resources.whatwg.org/logo.svg height=100></a>
-   <hgroup><h1 class=allcaps>HTML</h1><p id=living-standard>Commit Snapshot — Last Updated <span class=pubdate>18 September 2026</span></hgroup>
+   <hgroup><h1 class=allcaps>HTML</h1><p id=living-standard>Commit Snapshot — Last Updated <span class=pubdate>19 September 2026</span></hgroup>
    
    <nav>
     
@@ -48,7 +48,7 @@
   <details class=annoying-warning open="">
    <summary>This is a Commit Snapshot of the standard</summary>
 
-   <p>This document contains the contents of the standard as of the <a href=https://github.com/whatwg/html/commit/9e68ef38c40ca71c5c055daf8b96597b052b326c class=sha-link>9e68ef38c40ca71c5c055daf8b96597b052b326c commit</a>, and
+   <p>This document contains the contents of the standard as of the <a href=https://github.com/whatwg/html/commit/7e935e93a6dc6c691f2c5b3b67e068c810c2616c class=sha-link>7e935e93a6dc6c691f2c5b3b67e068c810c2616c commit</a>, and
    should only be used as a historical reference. This commit may not even have been merged into the
    main branch.</p>
 
@@ -11326,18 +11326,20 @@ Link: &lt;/font.ttf>; <a href=#attr-link-rel id=early-hints:attr-link-rel-4>rel<
 
     <div class=example>
 
-     <p>An installed word processor can provide its application name, the name of the current
-     document for application UI, and a full document title separately:</p>
+     <p>Suppose an installed word processor's manifest names the application "Contoso Writer". Its
+     document title includes that name so that it can identify the document when presented out of
+     context:</p>
 
-     <pre><code class='html'><c- p>&lt;</c-><c- f>link</c-> <c- e>rel</c-><c- o>=</c-><c- s>&quot;manifest&quot;</c-> <c- e>href</c-><c- o>=</c-><c- s>&quot;/manifest.webmanifest&quot;</c-><c- p>&gt;</c->
-<c- p>&lt;</c-><c- f>meta</c-> <c- e>name</c-><c- o>=</c-><c- s>&quot;application-name&quot;</c-> <c- e>content</c-><c- o>=</c-><c- s>&quot;Contoso Writer&quot;</c-><c- p>&gt;</c->
+     <pre><code class='html'><c- c>&lt;!-- /manifest.webmanifest names the application &quot;Contoso Writer&quot;. --&gt;</c->
+<c- p>&lt;</c-><c- f>link</c-> <c- e>rel</c-><c- o>=</c-><c- s>&quot;manifest&quot;</c-> <c- e>href</c-><c- o>=</c-><c- s>&quot;/manifest.webmanifest&quot;</c-><c- p>&gt;</c->
 <c- p>&lt;</c-><c- f>title</c-><c- p>&gt;</c->Quarterly report — Contoso Writer<c- p>&lt;/</c-><c- f>title</c-><c- p>&gt;</c->
 <c- p>&lt;</c-><c- f>meta</c-> <c- e>name</c-><c- o>=</c-><c- s>&quot;application-title&quot;</c-> <c- e>content</c-><c- o>=</c-><c- s>&quot;Quarterly report&quot;</c-><c- p>&gt;</c-></code></pre>
 
-     <p>The manifest and <code id=standard-metadata-names:meta-application-name-6><a href=#meta-application-name>application-name</a></code> identify the
-     application as "Contoso Writer". A browser tab can continue to use the full document
-     <code id=standard-metadata-names:the-title-element-3><a href=#the-title-element>title</a></code>, while installed application UI can present "Contoso Writer — Quarterly
-     report".</p>
+     <p>A browser tab can continue to use the full document <code id=standard-metadata-names:the-title-element-3><a href=#the-title-element>title</a></code>. Without an
+     application title, installed application UI that prefixes the application name to that title
+     could display "Contoso Writer — Quarterly report — Contoso Writer". By using the application
+     title as the document-specific portion instead, the same UI can display "Contoso Writer —
+     Quarterly report".</p>
 
     </div>
 
