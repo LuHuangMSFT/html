@@ -17908,20 +17908,16 @@ interface <dfn interface>HTMLMetaElement</dfn> : <span>HTMLElement</span> {
 
     <div class="example">
 
-     <p>Suppose an installed word processor's manifest names the application "Contoso Writer". Its
-     document title includes that name so that it can identify the document when presented out of
-     context:</p>
+     <p>An installed word processor can provide the name of the current document separately from
+     its full document title:</p>
 
-     <pre><code class="html">&lt;!-- /manifest.webmanifest names the application "Contoso Writer". -->
-&lt;link rel="manifest" href="/manifest.webmanifest">
-&lt;title>Quarterly report — Contoso Writer&lt;/title>
+     <pre><code class="html">&lt;title>Quarterly report — Contoso Writer&lt;/title>
 &lt;meta name="application-title" content="Quarterly report"></code></pre>
 
-     <p>A browser tab can continue to use the full document <code>title</code>. Without an
-     application title, installed application UI that prefixes the application name to that title
-     could display "Contoso Writer — Quarterly report — Contoso Writer". By using the application
-     title as the document-specific portion instead, the same UI can display "Contoso Writer —
-     Quarterly report".</p>
+     <p>The full document <code>title</code> remains available for user interfaces that need a title
+     that identifies the document out of context. The application title provides the shorter
+     document-specific context for application UI. User agents decide how to present or combine
+     these values.</p>
 
     </div>
 
