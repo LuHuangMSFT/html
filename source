@@ -4832,9 +4832,7 @@ a.setAttribute('href', 'https://example.com/'); // change the content attribute 
     <ul class="brief">
      <li><dfn data-x-href="https://w3c.github.io/manifest/#dfn-manifest">application manifest</dfn></li>
      <li><dfn data-x-href="https://w3c.github.io/manifest/#dfn-installed-web-application">installed web application</dfn></li>
-     <li><dfn data-x-href="https://w3c.github.io/manifest/#dfn-navigation-scope">navigation scope</dfn></li>
      <li><dfn data-x-href="https://w3c.github.io/manifest/#dfn-processing-a-manifest">process the manifest</dfn></li>
-     <li><dfn data-x-href="https://w3c.github.io/manifest/#dfn-within-scope">within scope</dfn></li>
     </ul>
    </dd>
 
@@ -17960,41 +17958,24 @@ interface <dfn interface>HTMLMetaElement</dfn> : <span>HTMLElement</span> {
     <code>meta</code> element with <code data-x="attr-meta-content">content=""</code> supplies the
     empty string, while an element without the attribute is not a candidate.</p>
 
-    <p>If a user agent is using the result of the above algorithm in UI, then whenever a DOM change
-    might change that result, the user agent must re-run the algorithm and update any affected UI.
-    Such changes include <code>meta</code> elements being <span data-x="node is inserted into a
-    document">inserted into the document</span> or <span data-x="node is removed from a
-    document">removed from the document</span>, and changes to their <code
-    data-x="attr-meta-name">name</code> or <code data-x="attr-meta-content">content</code>
-    attributes.</p>
-
-    <p>When using an application title in UI associated with a <span>top-level traversable</span>,
-    user agents must only use the application title of that <span>top-level traversable</span>'s
-    <span>active document</span>. In particular, an application title from a document in a
-    descendant <span data-x="navigable">navigable</span> must not affect such UI.</p>
-
-    <p>When the UI is for an <span>installed web application</span>, the user agent must only use an
-    application title while the active document's <span>URL</span> is <span>within scope</span> of
-    the <span>navigation scope</span> of the <span>application manifest</span> applied to the
-    <span>top-level traversable</span>.</p>
+    <p>If a user agent uses a document's application title in UI, it must update the affected UI
+    whenever the result of obtaining that title changes. UI associated with a <span>top-level
+    traversable</span> must use only its <span>active document</span>'s application title; documents
+    in descendant <span data-x="navigable">navigables</span> must not affect that UI.</p>
 
     </div>
 
-    <p>User agents may use the result of <span data-x="obtain an application title">obtaining a
-    document's application title</span> as the document-specific portion of UI for an
-    <span>installed web application</span>, such as the title of an application window. A user agent
-    that does so must use the result when it is not null. When the result is null, it must instead
-    use the document's <code data-x="dom-document-title">title</code>. An empty string therefore
-    specifies that the UI has no document-specific portion.</p>
+    <p>User agents may use a non-null application title as document-specific text in UI for an
+    <span>installed web application</span>, such as the title of an application window. A null result
+    means that no application title was supplied. An empty string explicitly supplies no
+    document-specific text.</p>
 
     <p>An application title is untrusted, document-controlled text. A user agent must not use it as
-    the sole indication of which installed web application owns the UI. User agents may truncate,
-    elide, or otherwise adapt the value to fit the constraints of their UI.</p>
-
-    <p>When presenting an application title, the user agent should use the <span>language</span> and
-    <span>the directionality</span> of the <code>meta</code> element from which the value was
-    obtained. When combining an application title with an application name, the user agent should
-    bidirectionally isolate the two strings and use locale-appropriate order and punctuation.</p>
+    the sole indication of which installed web application owns the UI. When presenting an
+    application title, the user agent should use the <span>language</span> and <span>the
+    directionality</span> of the <code>meta</code> element that supplied it. When combining an
+    application title with other text, the user agent should bidirectionally isolate the component
+    strings.</p>
    </dd>
 
    <dt><dfn attr-value for="meta/name"><code data-x="meta-author">author</code></dfn></dt>
