@@ -17887,6 +17887,97 @@ interface <dfn interface>HTMLMetaElement</dfn> : <span>HTMLElement</span> {
     </div>
    </dd>
 
+   <dt><dfn attr-value for="meta/name"><code
+   data-x="meta-application-title">application-title</code></dfn></dt>
+
+   <dd>
+    <p>The <code data-x="meta-application-title">application-title</code> metadata name gives a
+    short title for the current document or activity within a web application, such as the name of
+    an open document or the section currently displayed. It differs from <code
+    data-x="meta-application-name">application-name</code>, which gives the name of the web
+    application, and from the document's <code>title</code>, which identifies the document when it
+    is presented out of context. User agents can present an application title alongside an
+    application name, so authors should choose a value that remains useful in that context. The
+    value may be the empty string.</p>
+
+    <p>There must not be more than one <code>meta</code> element where the <code
+    data-x="attr-meta-name">name</code> attribute value is an <span>ASCII case-insensitive</span>
+    match for <code data-x="meta-application-title">application-title</code> per document.</p>
+
+    <div class="example">
+
+     <p>A web application can provide its stable application name, concise current document context,
+     and full document title separately:</p>
+
+     <pre><code class="html">&lt;meta name="application-name" content="Contoso Writer">
+&lt;meta name="application-title" content="Quarterly report">
+&lt;title>Quarterly report — Contoso Writer&lt;/title></code></pre>
+
+     <p>The application name identifies the application, the application title identifies the
+     current document or activity within it, and the full document <code>title</code> identifies the
+     document out of context. User agents decide which values to use and how to present or combine
+     them.</p>
+
+    </div>
+
+    <div w-nodev>
+
+    <div algorithm>
+    <p>To <dfn data-x="obtain an application title">obtain a document's application title</dfn>,
+    given a <code>Document</code> <var>document</var>, user agents must run the following steps. The
+    algorithm returns either a string or null.</p>
+
+    <ol>
+     <li>
+      <p>Let <var>candidate elements</var> be the list of all <code>meta</code> elements in
+      <var>document</var> that meet the following criteria, in <span>tree order</span>:</p>
+
+      <ul>
+       <li><p>the element has a <code data-x="attr-meta-name">name</code> attribute whose value is
+       an <span>ASCII case-insensitive</span> match for <code
+       data-x="meta-application-title">application-title</code>; and</p></li>
+
+       <li><p>the element has a <code data-x="attr-meta-content">content</code> attribute.</p></li>
+      </ul>
+     </li>
+
+     <li><p>If <var>candidate elements</var> is empty, then return null.</p></li>
+
+     <li><p>Let <var>element</var> be the first item of <var>candidate elements</var>.</p></li>
+
+     <li><p>Let <var>value</var> be the result of <span data-x="strip leading and trailing ASCII
+     whitespace">stripping leading and trailing ASCII whitespace</span> from the value of
+     <var>element</var>'s <code data-x="attr-meta-content">content</code> attribute.</p></li>
+
+     <li><p>Return <var>value</var>.</p></li>
+    </ol>
+    </div>
+
+    <p class="note">Requiring the <code data-x="attr-meta-content">content</code> attribute makes
+    the absence of an application title distinct from an explicitly empty application title. A
+    <code>meta</code> element with <code data-x="attr-meta-content">content=""</code> supplies the
+    empty string, while an element without the attribute is not a candidate.</p>
+
+    <p>If a user agent uses a document's application title in UI, it must update the affected UI
+    whenever the result of obtaining that title changes. UI associated with a <span>top-level
+    traversable</span> must use only its <span>active document</span>'s application title; documents
+    in descendant <span data-x="navigable">navigables</span> must not affect that UI.</p>
+
+    </div>
+
+    <p>User agents may use a non-null application title as document-specific text in UI for an
+    <span>installed web application</span>, such as the title of an application window. A null result
+    means that no application title was supplied. An empty string explicitly supplies no
+    document-specific text.</p>
+
+    <p>An application title is untrusted, document-controlled text. A user agent must not use it as
+    the sole indication of which installed web application owns the UI. When presenting an
+    application title, the user agent should use the <span>language</span> and <span>the
+    directionality</span> of the <code>meta</code> element that supplied it. When combining an
+    application title with other text, the user agent should bidirectionally isolate the component
+    strings.</p>
+   </dd>
+
    <dt><dfn attr-value for="meta/name"><code data-x="meta-author">author</code></dfn></dt>
 
    <dd><p>The value must be a free-form string giving the name of one of the page's
@@ -162554,6 +162645,7 @@ INSERT INTERFACES HERE
   Logan Moore,
   Lorenz Ackermann,
   Loune,
+  Lu Huang, <!-- LuHuangMSFT on GitHub -->
   Luca Casonato,
   Lucas Gadani,
   &#x0141;ukasz Pilorz,
