@@ -625,16 +625,17 @@ gave me some of the songs they wrote. I love sharing my music.<c- p>&lt;/</c-><c
 
     <div class=example>
 
-     <p>An installed word processor can provide the name of the current document separately from
-     its full document title:</p>
+     <p>A web application can provide its stable application name, concise current document context,
+     and full document title separately:</p>
 
-     <pre><code class='html'><c- p>&lt;</c-><c- f>title</c-><c- p>&gt;</c->Quarterly report — Contoso Writer<c- p>&lt;/</c-><c- f>title</c-><c- p>&gt;</c->
-<c- p>&lt;</c-><c- f>meta</c-> <c- e>name</c-><c- o>=</c-><c- s>&quot;application-title&quot;</c-> <c- e>content</c-><c- o>=</c-><c- s>&quot;Quarterly report&quot;</c-><c- p>&gt;</c-></code></pre>
+     <pre><code class='html'><c- p>&lt;</c-><c- f>meta</c-> <c- e>name</c-><c- o>=</c-><c- s>&quot;application-name&quot;</c-> <c- e>content</c-><c- o>=</c-><c- s>&quot;Contoso Writer&quot;</c-><c- p>&gt;</c->
+<c- p>&lt;</c-><c- f>meta</c-> <c- e>name</c-><c- o>=</c-><c- s>&quot;application-title&quot;</c-> <c- e>content</c-><c- o>=</c-><c- s>&quot;Quarterly report&quot;</c-><c- p>&gt;</c->
+<c- p>&lt;</c-><c- f>title</c-><c- p>&gt;</c->Quarterly report — Contoso Writer<c- p>&lt;/</c-><c- f>title</c-><c- p>&gt;</c-></code></pre>
 
-     <p>The full document <code id=standard-metadata-names:the-title-element-2><a href=#the-title-element>title</a></code> remains available for user interfaces that need a title
-     that identifies the document out of context. The application title provides the shorter
-     document-specific context for application UI. User agents decide how to present or combine
-     these values.</p>
+     <p>The application name identifies the application, the application title identifies the
+     current document or activity within it, and the full document <code id=standard-metadata-names:the-title-element-2><a href=#the-title-element>title</a></code> identifies the
+     document out of context. User agents decide which values to use and how to present or combine
+     them.</p>
 
     </div>
 

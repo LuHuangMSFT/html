@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang=en-US-x-hixie><meta charset=utf-8><meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name=viewport><title>HTML Standard (Commit Snapshot ef2f71bd5d22db25f0bd226c461f00b58ecd0e21)</title><meta content=#3c790a name=theme-color><meta content="light dark" name=color-scheme><link rel=stylesheet href=https://resources.whatwg.org/standard-shared-with-dev.css crossorigin=""><link rel=stylesheet href=https://resources.whatwg.org/standard.css crossorigin=""><link rel=stylesheet href=https://resources.whatwg.org/spec.css crossorigin=""><link rel=icon href=https://resources.whatwg.org/logo-snapshot.svg crossorigin=""><link rel=stylesheet href=https://html.spec.whatwg.org/styles.css crossorigin=""><script>
+<!DOCTYPE html><html lang=en-US-x-hixie><meta charset=utf-8><meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name=viewport><title>HTML Standard (Commit Snapshot 9a4389eae7ef72ecd2d837cfeeb0e4a8cc652514)</title><meta content=#3c790a name=theme-color><meta content="light dark" name=color-scheme><link rel=stylesheet href=https://resources.whatwg.org/standard-shared-with-dev.css crossorigin=""><link rel=stylesheet href=https://resources.whatwg.org/standard.css crossorigin=""><link rel=stylesheet href=https://resources.whatwg.org/spec.css crossorigin=""><link rel=icon href=https://resources.whatwg.org/logo-snapshot.svg crossorigin=""><link rel=stylesheet href=https://html.spec.whatwg.org/styles.css crossorigin=""><script>
    function toggleStatus(div) {
      div.parentNode.classList.toggle('wrapped');
    }
@@ -48,7 +48,7 @@
   <details class=annoying-warning open="">
    <summary>This is a Commit Snapshot of the standard</summary>
 
-   <p>This document contains the contents of the standard as of the <a href=https://github.com/whatwg/html/commit/ef2f71bd5d22db25f0bd226c461f00b58ecd0e21 class=sha-link>ef2f71bd5d22db25f0bd226c461f00b58ecd0e21 commit</a>, and
+   <p>This document contains the contents of the standard as of the <a href=https://github.com/whatwg/html/commit/9a4389eae7ef72ecd2d837cfeeb0e4a8cc652514 class=sha-link>9a4389eae7ef72ecd2d837cfeeb0e4a8cc652514 commit</a>, and
    should only be used as a historical reference. This commit may not even have been merged into the
    main branch.</p>
 
@@ -11326,16 +11326,17 @@ Link: &lt;/font.ttf>; <a href=#attr-link-rel id=early-hints:attr-link-rel-4>rel<
 
     <div class=example>
 
-     <p>An installed word processor can provide the name of the current document separately from
-     its full document title:</p>
+     <p>A web application can provide its stable application name, concise current document context,
+     and full document title separately:</p>
 
-     <pre><code class='html'><c- p>&lt;</c-><c- f>title</c-><c- p>&gt;</c->Quarterly report — Contoso Writer<c- p>&lt;/</c-><c- f>title</c-><c- p>&gt;</c->
-<c- p>&lt;</c-><c- f>meta</c-> <c- e>name</c-><c- o>=</c-><c- s>&quot;application-title&quot;</c-> <c- e>content</c-><c- o>=</c-><c- s>&quot;Quarterly report&quot;</c-><c- p>&gt;</c-></code></pre>
+     <pre><code class='html'><c- p>&lt;</c-><c- f>meta</c-> <c- e>name</c-><c- o>=</c-><c- s>&quot;application-name&quot;</c-> <c- e>content</c-><c- o>=</c-><c- s>&quot;Contoso Writer&quot;</c-><c- p>&gt;</c->
+<c- p>&lt;</c-><c- f>meta</c-> <c- e>name</c-><c- o>=</c-><c- s>&quot;application-title&quot;</c-> <c- e>content</c-><c- o>=</c-><c- s>&quot;Quarterly report&quot;</c-><c- p>&gt;</c->
+<c- p>&lt;</c-><c- f>title</c-><c- p>&gt;</c->Quarterly report — Contoso Writer<c- p>&lt;/</c-><c- f>title</c-><c- p>&gt;</c-></code></pre>
 
-     <p>The full document <code id=standard-metadata-names:the-title-element-3><a href=#the-title-element>title</a></code> remains available for user interfaces that need a title
-     that identifies the document out of context. The application title provides the shorter
-     document-specific context for application UI. User agents decide how to present or combine
-     these values.</p>
+     <p>The application name identifies the application, the application title identifies the
+     current document or activity within it, and the full document <code id=standard-metadata-names:the-title-element-3><a href=#the-title-element>title</a></code> identifies the
+     document out of context. User agents decide which values to use and how to present or combine
+     them.</p>
 
     </div>
 
