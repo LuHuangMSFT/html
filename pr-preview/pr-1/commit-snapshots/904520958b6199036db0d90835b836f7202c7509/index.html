@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang=en-US-x-hixie><meta charset=utf-8><meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name=viewport><title>HTML Standard (Commit Snapshot 39b965ac8461fc241ae717afe694ba779111f23f)</title><meta content=#3c790a name=theme-color><meta content="light dark" name=color-scheme><link rel=stylesheet href=https://resources.whatwg.org/standard-shared-with-dev.css crossorigin=""><link rel=stylesheet href=https://resources.whatwg.org/standard.css crossorigin=""><link rel=stylesheet href=https://resources.whatwg.org/spec.css crossorigin=""><link rel=icon href=https://resources.whatwg.org/logo-snapshot.svg crossorigin=""><link rel=stylesheet href=https://html.spec.whatwg.org/styles.css crossorigin=""><script>
+<!DOCTYPE html><html lang=en-US-x-hixie><meta charset=utf-8><meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name=viewport><title>HTML Standard (Commit Snapshot 904520958b6199036db0d90835b836f7202c7509)</title><meta content=#3c790a name=theme-color><meta content="light dark" name=color-scheme><link rel=stylesheet href=https://resources.whatwg.org/standard-shared-with-dev.css crossorigin=""><link rel=stylesheet href=https://resources.whatwg.org/standard.css crossorigin=""><link rel=stylesheet href=https://resources.whatwg.org/spec.css crossorigin=""><link rel=icon href=https://resources.whatwg.org/logo-snapshot.svg crossorigin=""><link rel=stylesheet href=https://html.spec.whatwg.org/styles.css crossorigin=""><script>
    function toggleStatus(div) {
      div.parentNode.classList.toggle('wrapped');
    }
@@ -13,7 +13,7 @@
   <script crossorigin="" defer="" src=https://resources.whatwg.org/commit-snapshot-shortcut-key.js></script>
   <header id=head class="head with-buttons">
    <a href=https://whatwg.org/ class=logo><img width=100 alt=WHATWG crossorigin="" class=darkmode-aware src=https://resources.whatwg.org/logo.svg height=100></a>
-   <hgroup><h1 class=allcaps>HTML</h1><p id=living-standard>Commit Snapshot — Last Updated <span class=pubdate>19 September 2026</span></hgroup>
+   <hgroup><h1 class=allcaps>HTML</h1><p id=living-standard>Commit Snapshot — Last Updated <span class=pubdate>24 September 2026</span></hgroup>
    
    <nav>
     
@@ -48,7 +48,7 @@
   <details class=annoying-warning open="">
    <summary>This is a Commit Snapshot of the standard</summary>
 
-   <p>This document contains the contents of the standard as of the <a href=https://github.com/whatwg/html/commit/39b965ac8461fc241ae717afe694ba779111f23f class=sha-link>39b965ac8461fc241ae717afe694ba779111f23f commit</a>, and
+   <p>This document contains the contents of the standard as of the <a href=https://github.com/whatwg/html/commit/904520958b6199036db0d90835b836f7202c7509 class=sha-link>904520958b6199036db0d90835b836f7202c7509 commit</a>, and
    should only be used as a historical reference. This commit may not even have been merged into the
    main branch.</p>
 
@@ -11377,9 +11377,9 @@ Link: &lt;/font.ttf>; <a href=#attr-link-rel id=early-hints:attr-link-rel-4>rel<
     <p>An application title is untrusted, document-controlled text. A user agent must not use it as
     the sole indication of which installed web application owns the UI. When presenting an
     application title, the user agent should use the <a href=#language id=standard-metadata-names:language-5>language</a> and <a href=#the-directionality id=standard-metadata-names:the-directionality>the
-    directionality</a> of the <code id=standard-metadata-names:the-meta-element-9><a href=#the-meta-element>meta</a></code> element that supplied it. When combining an
-    application title with other text, the user agent should bidirectionally isolate the component
-    strings.</p>
+    directionality</a> of the <code id=standard-metadata-names:the-meta-element-9><a href=#the-meta-element>meta</a></code> element that supplied it. When presenting an
+    application title alongside other text, the user agent should bidirectionally isolate the
+    application title.</p>
    <dt><dfn data-dfn-for=meta/name id=meta-author data-dfn-type=attr-value><code>author</code></dfn><dd><p>The value must be a free-form string giving the name of one of the page's
    authors.<dt><dfn data-dfn-for=meta/name id=meta-description data-dfn-type=attr-value><code>description</code></dfn><dd><p>The value must be a free-form string that describes the page. The value must be
    appropriate for use in a directory of pages, e.g. in a search engine. There must not be more than
