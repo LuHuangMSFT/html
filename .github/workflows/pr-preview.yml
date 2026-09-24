@@ -1,0 +1,48 @@
+name: Deploy PR preview
+
+on:
+  pull_request:
+    branches:
+    - main
+    types:
+    - opened
+    - reopened
+    - synchronize
+    - closed
+
+concurrency:
+  group: pr-preview-${{ github.event.number }}
+  cancel-in-progress: true
+
+permissions:
+  contents: write
+  deployments: read
+  pull-requests: write
+
+jobs:
+  deploy-preview:
+    runs-on: ubuntu-22.04
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: 2
+
+    - name: Build
+      if: github.event.action != 'closed'
+      run: |
+        mkdir "$RUNNER_TEMP/html-output"
+        docker run \
+          --mount "type=bind,source=$GITHUB_WORKSPACE,destination=/whatwg/html,readonly=1" \
+          --env "HTML_SOURCE=/whatwg/html" \
+          --mount "type=bind,source=$RUNNER_TEMP/html-output,destination=/whatwg/output" \
+          --env "HTML_OUTPUT=/whatwg/output" \
+          ghcr.io/whatwg/html-build
+
+    - name: Deploy preview
+      uses: rossjrw/pr-preview-action@ffa7509e91a3ec8dfc2e5536c4d5c1acdf7a6de9 # v1.8.1
+      with:
+        source-dir: ${{ runner.temp }}/html-output
+        preview-branch: gh-pages
+        wait-for-pages-deployment: true
+        qr-code: false
