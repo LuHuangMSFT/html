@@ -17973,9 +17973,9 @@ interface <dfn interface>HTMLMetaElement</dfn> : <span>HTMLElement</span> {
     <p>An application title is untrusted, document-controlled text. A user agent must not use it as
     the sole indication of which installed web application owns the UI. When presenting an
     application title, the user agent should use the <span>language</span> and <span>the
-    directionality</span> of the <code>meta</code> element that supplied it. When combining an
-    application title with other text, the user agent should bidirectionally isolate the component
-    strings.</p>
+    directionality</span> of the <code>meta</code> element that supplied it. When presenting an
+    application title alongside other text, the user agent should bidirectionally isolate the
+    application title.</p>
    </dd>
 
    <dt><dfn attr-value for="meta/name"><code data-x="meta-author">author</code></dfn></dt>
